@@ -59,10 +59,7 @@ const Index = props => {
             <Airline backgroundColor={`#4885ff`}>
               <Text color={`white`} textAlign={`center`} py={2} fontSize={16} fontWeight={500}>THAI AIRWAYS</Text>
             </Airline>
-            <Container px={3} backgroundColor={`white`}>
-              <Box>
-                <Heading py={3} fontSize={14} color={`rgba(0, 0, 0, 0.6)`}>BANGKOK RFE</Heading>
-              </Box>
+            <Container px={3} pt={4} backgroundColor={`white`}>
               <Flex alignItems={`center`} px={5}>
                 <Box>
                   <AirportIATA fontSize={44}>BKK</AirportIATA>
