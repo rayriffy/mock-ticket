@@ -1,6 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import {Box, Card, Text, Heading, Flex} from 'rebass'
+import {FaChevronRight} from 'react-icons/fa'
+
+import {Box, Card, Text, Flex} from 'rebass'
 import styled from 'styled-components'
 
 import Barcode from 'react-barcode'
@@ -22,7 +25,7 @@ const AirportIATA = styled(Text)`
 const AirportCity = styled(Text)`
   font-weight: 500;
   color: rgba(0, 0, 0, 0.45);
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   text-align: center;
 `
 
@@ -32,7 +35,7 @@ const Container = styled(Box)`
 
 const InfoTitle = styled(Text)`
   font-weight: 500;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 `
 
 const InfoValue = styled(Text)`
@@ -40,13 +43,19 @@ const InfoValue = styled(Text)`
   letter-spacing: 2.5px;
 `
 
+const RightArrow = styled(FaChevronRight)`
+  color: rgba(0, 0, 0, 0.45);
+`
+
 const Info = props => {
   const {name, value} = props
   return (
-  <Box>
-    <InfoTitle fontSize={13}>{name}</InfoTitle>
-    <InfoValue fontWeight={700} fontSize={24}>{value}</InfoValue>
-  </Box>
+    <Box>
+      <InfoTitle fontSize={13}>{name}</InfoTitle>
+      <InfoValue fontWeight={700} fontSize={24}>
+        {value}
+      </InfoValue>
+    </Box>
   )
 }
 
@@ -54,36 +63,38 @@ const Index = props => {
   return (
     <App>
       <Flex mt={5} justifyContent={`center`}>
-        <Box width={[20/24, 16/24, 12/24, 7/24]}>
+        <Box width={[20 / 24, 16 / 24, 12 / 24, 7 / 24]}>
           <Card boxShadow={`0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)`}>
             <Airline backgroundColor={`#4885ff`}>
-              <Text color={`white`} textAlign={`center`} py={2} fontSize={16} fontWeight={500}>THAI AIRWAYS</Text>
+              <Text color={`white`} textAlign={`center`} py={2} fontSize={16} fontWeight={500}>
+                THAI AIRWAYS
+              </Text>
             </Airline>
             <Container px={3} pt={4} backgroundColor={`white`}>
-              <Flex alignItems={`center`} px={5}>
+              <Flex alignItems={`center`} px={[3, 4, 5, 5]}>
                 <Box>
                   <AirportIATA fontSize={44}>BKK</AirportIATA>
                   <AirportCity>Bangkok</AirportCity>
                 </Box>
                 <Box mx={`auto`}>
-                  >
+                  <RightArrow />
                 </Box>
                 <Box>
                   <AirportIATA fontSize={44}>HND</AirportIATA>
                   <AirportCity>Tokyo</AirportCity>
                 </Box>
               </Flex>
-              <Box p={3}>
+              <Box px={[0, 2, 3, 3]} py={3}>
                 <Card p={3} backgroundColor={`#f3f7ff`} borderRadius={6}>
                   <Flex>
-                    <Box px={3}>
+                    <Box px={[2, 3]}>
                       <Info name={`Flight`} value={`TG513`} />
                     </Box>
                     <Box mx={`auto`} />
-                    <Box px={3}>
+                    <Box px={[2, 3]}>
                       <Info name={`ACFT`} value={`B787`} />
                     </Box>
-                    <Box px={3}>
+                    <Box px={[2, 3]}>
                       <Info name={`Gate`} value={`A5`} />
                     </Box>
                   </Flex>
@@ -110,6 +121,11 @@ const Index = props => {
       </Flex>
     </App>
   )
+}
+
+Info.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
 }
 
 export default Index
